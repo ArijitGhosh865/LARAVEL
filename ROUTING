@@ -1,0 +1,27 @@
+//01 VIEW
+Route::get('?',function(){
+       return view('welcome');
+});
+
+//02
+Route::get('/',function(){
+       return['foo'->'bar'];
+});
+
+//03 ROUTE WILDCARDS
+Route::get('/post/{post}',function($pots)
+       {
+       $posts=[
+              'my-first post'->'Hello, this is my first blog post;';
+              'my-second-post'->'Now Iam getting the hand of the blogging thing';
+              ];              
+if (! array_key_exists($post, posts)){
+   abort(404,'sorry, that post was not found');
+   }
+return view('post',[
+       'post->$posts[$post]
+]);
+});
+
+//CONTROLLER
+Route::get('/posts/{posts}','postcontroller@show');
