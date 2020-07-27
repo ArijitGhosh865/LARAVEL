@@ -1,10 +1,10 @@
 //database access
-namespace App Http controllers;
+namespace App\Http\controllers;
 class Postscontroller extends controller
 {
   public function show($slug)
   {
-  $post= DB::table('post')->where('slug',$slug)->first();
+  $post=\DB::table('post')->where('slug',$slug)->first();
   dd($post);
   return view('post',['post'->$post]);
   }
