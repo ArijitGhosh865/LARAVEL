@@ -1,0 +1,10 @@
+//DAY 04
+//views
+Route::get('/',function(){
+       return view('welcome');
+       });
+Route::get('/about/{id}',function($id){
+       $data=['name'=>'about us','content'=>'This is about us page','id'=>$id];
+       return view('about',$data);
+});       
+       
