@@ -1,0 +1,63 @@
+//DAY 06
+//THE SEVEN RESTFUL CONTROLLER ACTION
+
+<?php
+namespace app\Http\controllers;
+use app\Article;
+class ArticlesController extends controller
+{
+    public function index()
+    {
+    //RENDER A LIST OF RO=ESURCE
+    $articales=Articale::latest()->get();
+    return view ('articales.index',['articales'=>$articales];
+    }
+    
+    public function show($id)
+    {
+    //SHOW A SINGLE RESOURCE
+    return view('articales.show',['articales'=>$articale]');
+    }
+    public function create()
+    {
+    //SHOW A VIEW TO CREATE A NEW RESOURCE
+      
+    }
+      
+    public function store()
+    {
+    //PRESIST THE NEW RESOURCE
+    
+    }
+    
+    public function edit()
+    {
+    //SHOW A VIEW TO EDIT AN EXITING RESOURCE
+    
+    }
+    
+    public function update()
+    {
+    //PERESIST THE EDITED RESOURCE
+    
+    }
+    
+    public function destroy()
+    {
+    //DELETE THE RESOURCE
+    
+    }
+}
+
+//CODE FOR VALIDATION
+
+public function store(Request $request)
+{
+    $validatedData = $request->validate([
+        'title' => ['required', 'unique:posts', 'max:255'],
+        'body' => 'required',
+    ]);
+
+    // The blog post is valid...
+}
+    
