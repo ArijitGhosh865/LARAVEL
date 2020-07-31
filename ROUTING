@@ -1,5 +1,5 @@
 //01 VIEW
-Route::get('?',function(){
+Route::get('/',function(){
        return view('welcome');
 });
 
