@@ -1,0 +1,38 @@
+// public/asset/css/style.css
+body{
+    background-color: cadetblue;
+}
+
+
+// public/asset/js/script.js
+
+alert('YOU ARE IN DANGER');
+
+
+// public/asset/images
+// save a image, name- IMG.jpg
+
+
+// route/web.php
+Route::get('/contact',function(){
+    
+    return view('contact')->with('name', 'contact us');
+});
+
+
+// resource/view/contact.blade.php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ asset('asset/css/style.css') }}">
+</head>
+<body>
+    <h2>{{$name}}</h2>
+    <img src="{{ asset('asset/images/IMG.jpg') }}" alt="">
+    <script src="{{ asset('asset/js/script.js') }}"></script>
+</body>
+</html>
