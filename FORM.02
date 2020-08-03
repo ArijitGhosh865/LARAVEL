@@ -1,0 +1,56 @@
+//create form and use @csrf
+//route
+
+Route::get('/getform','formController@getform');
+Route::post('/getdata','formController@getdata');
+
+// Http/formController.php
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class formController extends Controller
+{
+    public function getform(){
+        return view('form');
+    }
+    public function getdata(Request $request){
+        $name = $request->name;
+        $age = $request->age;
+        $data =['name'=>$name, 'age'=>$age];
+        return view('data', $data);
+    }
+}
+
+// form.blade.php
+
+<html>
+    <head>
+        <title>FORM</title>
+    </head>
+    <body>
+        <h1>form</h1>
+        <form action="{{url('getdata')}}"method="post">
+            @csrf
+            <input type="text" name="name"placeholder="name">
+            <input type="text" name="age"placeholder="age">
+            <input type="submit" value="submit form">
+        </form>    
+    </body>
+</html>
+
+//data.blade.php
+
+<html>
+    <head>
+        <title>GET DATA</title>
+    </head>
+    <body>
+        <h1>your data</h1>
+        <h3>NAME : {{$name}}</h3>
+        <h3>AGE : {{$age}}</h3>
+    </body>
+</html>
