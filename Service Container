@@ -1,0 +1,43 @@
+//container.php
+
+namespace app;
+class container
+{
+  protected $bindings=[];
+  public function bind($key, $value)
+  {
+    $this->bindings[$key]=$value;
+  }
+  public function resolve($key)
+  {
+    if(isset($this->bindings[$key])){
+      return call_user_func($this->binding[$key]);
+      }
+  }
+}
+
+//Example.php
+
+namespace app;
+class Example
+{
+  public function go()
+  {
+    dump('it work;;');
+  }
+}
+
+//web.php
+
+Route::get('/', function(){
+      $container=new\app\container();
+      $container->bind('example', function(){
+         return new\app\Example();
+      });
+      $example=$container->resolve('example');
+      $example->go();
+};
+
+
+  
+  
