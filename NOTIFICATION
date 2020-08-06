@@ -1,0 +1,20 @@
+//NOTIFICATION
+
+public function viaQueues()
+{
+    return [
+        'mail' => 'mail-queue',
+        'slack' => 'slack-queue',
+    ];
+}
+
+public function toMail($notifiable)
+{
+    $url = url('/invoice/'.$this->invoice->id);
+
+    return (new MailMessage)
+                ->greeting('Hello!')
+                ->line('One of your invoices has been paid!')
+                ->action('View Invoice', $url)
+                ->line('Thank you for using our application!');
+}
