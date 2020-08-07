@@ -1,0 +1,39 @@
+//Authorization
+//Gate method 
+//App\Providers\AuthServiceProvider
+
+public function boot()
+{
+    $this->registerPolicies();
+
+    Gate::define('edit-settings', function ($user) {
+        return $user->isAdmin;
+    });
+
+    Gate::define('update-post', function ($user, $post) {
+        return $user->id === $post->user_id;
+    });
+}
+
+
+if (Gate::allows('edit-settings')) {
+    // The current user can edit settings
+}
+
+if (Gate::allows('update-post', $post)) {
+    // The current user can update the post...
+}
+
+if (Gate::denies('update-post', $post)) {
+    // The current user can't update the post...
+}
+
+if (Gate::forUser($user)->allows('update-post', $post)) {
+    // The user can update the post...
+}
+
+if (Gate::forUser($user)->denies('update-post', $post)) {
+    // The user can't update the post...
+}
+
+
